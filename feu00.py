@@ -32,6 +32,7 @@ def center_line(arg):
 
 
 def rectangle(x, y):
+    #recuperation de toutes les lignes dans l'ordre
     x = int(x)
     y = int(y)
     rectangle_tab = {}
@@ -54,7 +55,10 @@ def rectangle(x, y):
         return rectangle_tab
 
 
-def afficher(rect):
+def afficher():
+    #recuperation du rectangle
+    rect = rectangle(sys.argv[0], sys.argv[1])
+    #affichage du rectangle
     line = ''
     result = []
     for key, value in rect.items():
@@ -80,6 +84,7 @@ def two_int_args(args):
 
 
 def arg_is_null(arg1, arg2):
+    #aucun argument a zero autorise
     if int(arg1) == 0 or int(arg2) == 0:
         return True
     else:
@@ -90,9 +95,10 @@ sys.argv.pop(0)
 #verifie qu'il y a deux arguments et que se sont des entiers
 res_two_int_args, error_message = two_int_args(sys.argv)
 if (res_two_int_args == True):
+    #verifie que les arguments ne sont pas a zero
     if (arg_is_null(sys.argv[0], sys.argv[1]) == False):
-        rect_tab = rectangle(sys.argv[0], sys.argv[1])
-        afficher(rect_tab)
+        #afficher le rectangle
+        afficher()
     else:
         print("Error : arguments can not equal zero")
 else:
